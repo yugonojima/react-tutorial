@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Hello from './hello'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title:'React sites',
+      url1:'https://reactjs.org/',
+      url2:'https://material-ui.com/',
+
+    }
+  };
+  render() {
+    return(
+    <div>
+      <h1>{this.state.title}</h1>
+      <ul>
+        <li><a href={this.state.url1}>React</a></li>
+        <li><a href={this.state.url2}>Material-UI</a></li>
+      </ul>
+      <Hello/>
+    </div>);
+  }
 }
+
 
 export default App;
