@@ -1,15 +1,23 @@
 import React from "react";
 import Hello from "./hello";
 import List from "./list";
+import AddList from "./addList";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.addValueParent = this.addValueParent.bind(this);
     this.state = {
       title: "React sites",
       url1: "https://reactjs.org/",
       url2: "https://material-ui.com/",
+      parentValue: 100,
     };
+  }
+
+  addValueParent(value) {
+    const newValue = this.state.parentValue + value;
+    this.setState({ parentValue: newValue });
   }
   render() {
     return (
@@ -25,6 +33,7 @@ class App extends React.Component {
         </ul>
         <Hello />
         <List />
+        <AddList send={this.addValueParent} pvalue={this.state.parentValue} />
       </div>
     );
   }
