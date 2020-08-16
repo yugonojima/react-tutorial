@@ -3,6 +3,7 @@ import React from "react";
 class List extends React.Component {
   constructor(props) {
     super(props);
+    this.delete = this.delete.bind(this)
     this.state = {
       todos: [
         { id: "1", text: "todo 1" },
@@ -12,6 +13,15 @@ class List extends React.Component {
     };
   }
 
+  delete = (id) => {
+    const newtodo = this.state.todos.filter((v) => {
+      if (v.id !== id) {
+        return v;
+      }
+    });
+    this.setState({ todos: newtodo });
+  };
+
   render() {
     return (
       <ul>
@@ -19,7 +29,7 @@ class List extends React.Component {
           return (
             <li key={v.id}>
               {v.text}
-              <button>X</button>
+              <button onClick={() => this.delete(v.id)}>X</button>
             </li>
           );
         })}
