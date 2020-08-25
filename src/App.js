@@ -2,6 +2,9 @@ import React from "react";
 import Hello from "./hello";
 import List from "./list";
 import AddList from "./addList";
+import PageOne from "./page1";
+import { Route } from "react-router-dom";
+import PageTwo from "./page2";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,6 +37,8 @@ class App extends React.Component {
         <Hello />
         <List />
         <AddList send={this.addValueParent} pvalue={this.state.parentValue} />
+        <Route path="/" component={PageOne} exact={true} />
+        <Route path="/pagetwo" component={PageTwo} exact={true} />
       </div>
     );
   }
